@@ -10,7 +10,7 @@ export const GuardUser = createContainer(
   },
   ({ loadingElement, loginElement, status }) => {
     if (status === 'LOADING') {
-      return loadingComponent;
+      return loadingElement;
     }
     if (status === 'LOGGEDOUT') {
       return loginElement;
