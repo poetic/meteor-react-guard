@@ -1,6 +1,6 @@
 Package.describe({
   name: 'poetic:meteor-react-guard',
-  version: '1.0.4',
+  version: '2.0.0',
   // Brief, one-line summary of the package.
   summary: 'Guard your react app against unlogged in users and on-going subscriptions',
   // URL to the Git repository containing the source code for this package.

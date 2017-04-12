@@ -1,40 +1,31 @@
-import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor'
+import { createContainer } from 'meteor/react-meteor-data'
 
 export const GuardUser = createContainer(
   () => {
     if (Meteor.loggingIn()) {
-      return { status: 'LOADING' };
+      return { status: 'LOADING' }
     }
-    return { status: Meteor.user() ? 'LOGGEDIN' : 'LOGGEDOUT' };
+    return { status: Meteor.user() ? 'LOGGEDIN' : 'LOGGEDOUT' }
   },
   ({ loadingElement, loginElement, status, bypass, children }) => {
     if (bypass) {
-      return children;
+      return children
     }
 
     if (status === 'LOADING') {
-      return loadingElement;
+      return loadingElement
     }
     if (status === 'LOGGEDOUT') {
-      return loginElement;
+      return loginElement
     }
-    return children;
+    return children
   }
-);
+)
 
-export const GuardSubscriptions = createContainer(
-  ({ getSubscriptions }) => {
-    const subscriptionsAreReady = getSubscriptions()
-      .every((sub) => sub.ready());
-
-    return { subscriptionsAreReady }
-  },
-  ({subscriptionsAreReady, loadingElement, children}) => {
-    if (subscriptionsAreReady) {
-      return children;
-    } else {
-      return loadingElement;
-    }
+export const GuardReady = createContainer(
+  ({ getReady }) => ({ ready: getReady() }),
+  ({ ready, children, loadingElement }) => {
+    return ready ? children : loadingElement
   }
-);
+)
