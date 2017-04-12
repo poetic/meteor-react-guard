@@ -5,7 +5,7 @@ ecmascript-runtime@0.3.15
 meteor@1.6.0
 modules@0.7.7
 modules-runtime@0.7.7
-poetic:meteor-react-guard@1.0.2
+poetic:meteor-react-guard@1.0.4
 promise@0.8.8
 react-meteor-data@0.2.9
 tmeasday:check-npm-versions@0.2.0
