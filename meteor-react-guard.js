@@ -8,7 +8,7 @@ export const GuardUser = createContainer(
     }
     return { status: Meteor.user() ? 'LOGGEDIN' : 'LOGGEDOUT' }
   },
-  ({ loadingElement, loginElement, status, bypass, children }) => {
+  ({ loadingElement, loginElement, status, bypass, children, getChildren }) => {
     if (bypass) {
       return children
     }
@@ -18,6 +18,9 @@ export const GuardUser = createContainer(
     }
     if (status === 'LOGGEDOUT') {
       return loginElement
+    }
+    if (getChildren) {
+      return getChildren()
     }
     return children
   }
