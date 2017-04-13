@@ -25,10 +25,10 @@ export const GuardUser = createContainer(
 
 export const GuardReady = createContainer(
   ({ getReady }) => ({ ready: getReady() }),
-  ({ ready, children, ChildComponent, loadingElement }) => {
+  ({ ready, children, getChildren, loadingElement }) => {
     if (ready) {
-      if (ChildComponent) {
-        return <ChildComponent/>
+      if (getChildren) {
+        return getChildren()
       }
       return children
     }
